@@ -7,7 +7,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.alviano.fetch.api.android.networking.NetworkChecker
+import com.alviano.fetch.api.android.networking.PostApi
 import com.alviano.fetch.api.android.networking.RemoteApi
+import kotlin.concurrent.thread
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,5 +24,8 @@ class MainActivity : AppCompatActivity() {
 
         RemoteApi().getFact()
 
+        thread {
+            PostApi().postApi()
+        }
     }
 }
