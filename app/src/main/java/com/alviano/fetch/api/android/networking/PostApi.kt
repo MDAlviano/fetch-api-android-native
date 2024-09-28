@@ -33,10 +33,13 @@ class PostApi {
                 DataOutputStream(os).use { dos ->
                     dos.writeBytes(data_to_send)
                     dos.flush()
+                    Log.d(TAG, "Data sent to server")
                 }
             }
 
             val responseCode = connection.responseCode
+            Log.d(TAG, "Response code: $responseCode")
+
 
             if (responseCode == HttpURLConnection.HTTP_OK) {
                 val response = StringBuilder()
@@ -52,7 +55,9 @@ class PostApi {
             }
             connection.disconnect()
         } catch (e: Exception) {
-            Log.d(TAG, e.message.toString())
+            Log.d(TAG, "Exception caught: ${e.message ?: "No message available"}")
+            Log.d(TAG, "Exception class: ${e::class.java.name}")
+            Log.d(TAG, "Exception details:", e)
             e.printStackTrace()
         }
     }

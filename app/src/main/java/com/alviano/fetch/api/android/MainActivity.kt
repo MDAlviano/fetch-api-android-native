@@ -9,6 +9,9 @@ import androidx.core.view.WindowInsetsCompat
 import com.alviano.fetch.api.android.networking.NetworkChecker
 import com.alviano.fetch.api.android.networking.PostApi
 import com.alviano.fetch.api.android.networking.RemoteApi
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import kotlin.concurrent.thread
 
 class MainActivity : AppCompatActivity() {
@@ -24,6 +27,9 @@ class MainActivity : AppCompatActivity() {
 
         RemoteApi().getFact()
 
-        PostApi().postApi()
+        CoroutineScope(Dispatchers.IO).launch {
+            PostApi().postApi()
+        }
+        
     }
 }
