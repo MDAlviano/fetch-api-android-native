@@ -10,7 +10,7 @@ import java.net.URL
 
 class PostApi {
 
-    val url: String = "http://127.0.0.1:5000"
+    val url: String = "http://10.0.2.2:5000"
 
     val data_to_send: String = "{\"data\": \"Sample Data\"}"
 

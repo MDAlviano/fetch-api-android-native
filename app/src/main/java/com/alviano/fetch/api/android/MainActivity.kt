@@ -24,8 +24,6 @@ class MainActivity : AppCompatActivity() {
 
         RemoteApi().getFact()
 
-        thread {
-            PostApi().postApi()
-        }
+        PostApi().postApi()
     }
 }
