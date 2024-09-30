@@ -4,6 +4,7 @@ import android.net.ConnectivityManager
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.alviano.fetch.api.android.networking.NetworkChecker
@@ -17,6 +18,8 @@ import com.android.volley.toolbox.Volley
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import org.json.JSONArray
+import org.json.JSONObject
 
 class MainActivity : AppCompatActivity() {
 
@@ -43,15 +46,40 @@ class MainActivity : AppCompatActivity() {
 
         // parsing data
         buttonFetch.setOnClickListener {
-            parsingData()
+            fetchData()
+            Toast.makeText(this, "Clicked", Toast.LENGTH_SHORT).show()
         }
 
     }
 
-    private fun parsingData() {
+    private fun fetchData() {
         val queue: RequestQueue = Volley.newRequestQueue(this)
         val url: String = "https://reqres.in/api/users"
 
+        val stringRequest: StringRequest = StringRequest(Request.Method.GET, url,
+            { response ->
+                parseJson(response)
+            },
+            { error ->
+                resultView.setText("That didn't work")
+            })
+        queue.add(stringRequest)
+    }
 
+    private fun parseJson(response: String) {
+        try {
+            val jsonObject: JSONObject = JSONObject(response)
+            val jsonArray: JSONArray = jsonObject.getJSONArray("users")
+            for (i in 0 until jsonArray.length()){
+                val jsonObject2: JSONObject = jsonArray.getJSONObject(i)
+                val nameVar = jsonObject2.getString("name")
+                val jobVar = jsonObject2.getString("job")
+                val idVar = jsonObject2.getString("id")
+                val createdAtVar = jsonObject.getString("createdAt")
+                resultView.append("Name: " + nameVar + "Job: " + jobVar + "Id: " + idVar + "Created at: " + createdAtVar + "\n")
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
     }
 }
