@@ -10,7 +10,7 @@ import java.net.URL
 
 class PostApi {
 
-    val url: String = "http://10.0.2.2:5000"
+    val url: String = "https://reqres.in/api/users"
 
     val data_to_send: String = "{\"data\": \"Sample Data\"}"
 
@@ -41,7 +41,7 @@ class PostApi {
             Log.d(TAG, "Response code: $responseCode")
 
 
-            if (responseCode == HttpURLConnection.HTTP_OK) {
+            if (responseCode == HttpURLConnection.HTTP_CREATED) {
                 val response = StringBuilder()
 
                 BufferedReader(InputStreamReader(connection.inputStream)).use { reader ->
@@ -50,6 +50,7 @@ class PostApi {
                     }
                 }
                 Log.d(TAG, "Response: $response")
+                Log.d(TAG, "URL: $data_to_send")
             } else {
                 Log.d(TAG, "Error: HTTP Response code - $responseCode")
             }

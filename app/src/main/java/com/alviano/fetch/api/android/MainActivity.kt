@@ -2,19 +2,26 @@ package com.alviano.fetch.api.android
 
 import android.net.ConnectivityManager
 import android.os.Bundle
+import android.widget.Button
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.alviano.fetch.api.android.networking.NetworkChecker
 import com.alviano.fetch.api.android.networking.PostApi
 import com.alviano.fetch.api.android.networking.RemoteApi
+import com.android.volley.Request
+import com.android.volley.RequestQueue
+import com.android.volley.Response
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlin.concurrent.thread
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var resultView: TextView
+    private lateinit var buttonFetch: Button
 
     private val networkChecker by lazy {
         NetworkChecker(getSystemService(ConnectivityManager::class.java))
@@ -30,6 +37,21 @@ class MainActivity : AppCompatActivity() {
         CoroutineScope(Dispatchers.IO).launch {
             PostApi().postApi()
         }
-        
+
+        resultView = findViewById(R.id.results)
+        buttonFetch = findViewById(R.id.buttonFetch)
+
+        // parsing data
+        buttonFetch.setOnClickListener {
+            parsingData()
+        }
+
+    }
+
+    private fun parsingData() {
+        val queue: RequestQueue = Volley.newRequestQueue(this)
+        val url: String = "https://reqres.in/api/users"
+
+
     }
 }
