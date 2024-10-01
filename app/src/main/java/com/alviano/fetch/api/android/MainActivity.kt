@@ -75,8 +75,10 @@ class MainActivity : AppCompatActivity() {
                 val idVar = jsonObject2.getString("id")
                 val emailVar = jsonObject2.getString("email")
                 val firstNameVar = jsonObject2.getString("first_name")
-                val lastNameVar = jsonObject.getString("last_name")
+                val lastNameVar = jsonObject2.getString("last_name")
+
                 resultView.append("Id: $idVar\nEmail: $emailVar\nFirstName: $firstNameVar\nLastName: $lastNameVar\n\n")
+
             }
         } catch (e: Exception) {
             e.printStackTrace()
