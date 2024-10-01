@@ -10,16 +10,21 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/results"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black"/>
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/resultsView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
     <Button
         android:id="@+id/buttonFetch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Fetch Data"/>
+
 
 </LinearLayout>

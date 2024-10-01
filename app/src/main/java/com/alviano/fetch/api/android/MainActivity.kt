@@ -7,12 +7,14 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.RecyclerView
+import com.alviano.fetch.api.android.adapters.MyAdapters
+import com.alviano.fetch.api.android.data.Person
 import com.alviano.fetch.api.android.networking.NetworkChecker
 import com.alviano.fetch.api.android.networking.PostApi
 import com.alviano.fetch.api.android.networking.RemoteApi
 import com.android.volley.Request
 import com.android.volley.RequestQueue
-import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import kotlinx.coroutines.CoroutineScope
@@ -25,6 +27,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var resultView: TextView
     private lateinit var buttonFetch: Button
+    private lateinit var recyclerView: RecyclerView
 
     private val networkChecker by lazy {
         NetworkChecker(getSystemService(ConnectivityManager::class.java))
@@ -41,7 +44,7 @@ class MainActivity : AppCompatActivity() {
             PostApi().postApi()
         }
 
-        resultView = findViewById(R.id.results)
+        resultView = findViewById(R.id.resultsView)
         buttonFetch = findViewById(R.id.buttonFetch)
 
         // parsing data
@@ -78,8 +81,12 @@ class MainActivity : AppCompatActivity() {
                 val lastNameVar = jsonObject2.getString("last_name")
 
                 resultView.append("Id: $idVar\nEmail: $emailVar\nFirstName: $firstNameVar\nLastName: $lastNameVar\n\n")
-
             }
+
+            val data = ArrayList<Person>()
+            val adapter = MyAdapters(data)
+
+
         } catch (e: Exception) {
             e.printStackTrace()
         }
