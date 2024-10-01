@@ -7,6 +7,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.alviano.fetch.api.android.adapters.MyAdapters
 import com.alviano.fetch.api.android.data.Person
@@ -35,7 +36,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+
         setContentView(R.layout.activity_main)
 
         RemoteApi().getFact()
@@ -46,6 +47,7 @@ class MainActivity : AppCompatActivity() {
 
         resultView = findViewById(R.id.resultsView)
         buttonFetch = findViewById(R.id.buttonFetch)
+        recyclerView = findViewById(R.id.recyclerView)
 
         // parsing data
         buttonFetch.setOnClickListener {
@@ -73,20 +75,29 @@ class MainActivity : AppCompatActivity() {
         try {
             val jsonObject: JSONObject = JSONObject(response)
             val jsonArray: JSONArray = jsonObject.getJSONArray("data")
-            for (i in 0 until jsonArray.length()){
+
+            for (i in 0 until jsonArray.length()) {
                 val jsonObject2: JSONObject = jsonArray.getJSONObject(i)
                 val idVar = jsonObject2.getString("id")
                 val emailVar = jsonObject2.getString("email")
                 val firstNameVar = jsonObject2.getString("first_name")
                 val lastNameVar = jsonObject2.getString("last_name")
 
-                resultView.append("Id: $idVar\nEmail: $emailVar\nFirstName: $firstNameVar\nLastName: $lastNameVar\n\n")
+
+
+                recyclerView = findViewById(R.id.recyclerView)
+                recyclerView.layoutManager = LinearLayoutManager(this)
+
+                val data = ArrayList<Person>()
+                data.add(Person(idVar, emailVar, firstNameVar, lastNameVar))
+                data.add(Person(idVar, emailVar, firstNameVar, lastNameVar))
+                data.add(Person(idVar, emailVar, firstNameVar, lastNameVar))
+                data.add(Person(idVar, emailVar, firstNameVar, lastNameVar))
+
+                val adapter = MyAdapters(data)
+                recyclerView.adapter = adapter
+
             }
-
-            val data = ArrayList<Person>()
-            val adapter = MyAdapters(data)
-
-
         } catch (e: Exception) {
             e.printStackTrace()
         }
