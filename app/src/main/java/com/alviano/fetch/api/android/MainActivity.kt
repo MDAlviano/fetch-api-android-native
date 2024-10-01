@@ -76,6 +76,8 @@ class MainActivity : AppCompatActivity() {
             val jsonObject: JSONObject = JSONObject(response)
             val jsonArray: JSONArray = jsonObject.getJSONArray("data")
 
+            val data = ArrayList<Person>()
+
             for (i in 0 until jsonArray.length()) {
                 val jsonObject2: JSONObject = jsonArray.getJSONObject(i)
                 val idVar = jsonObject2.getString("id")
@@ -83,21 +85,14 @@ class MainActivity : AppCompatActivity() {
                 val firstNameVar = jsonObject2.getString("first_name")
                 val lastNameVar = jsonObject2.getString("last_name")
 
-
-
-                recyclerView = findViewById(R.id.recyclerView)
-                recyclerView.layoutManager = LinearLayoutManager(this)
-
-                val data = ArrayList<Person>()
                 data.add(Person(idVar, emailVar, firstNameVar, lastNameVar))
-                data.add(Person(idVar, emailVar, firstNameVar, lastNameVar))
-                data.add(Person(idVar, emailVar, firstNameVar, lastNameVar))
-                data.add(Person(idVar, emailVar, firstNameVar, lastNameVar))
-
-                val adapter = MyAdapters(data)
-                recyclerView.adapter = adapter
-
             }
+
+            recyclerView = findViewById(R.id.recyclerView)
+            recyclerView.layoutManager = LinearLayoutManager(this)
+            val adapter = MyAdapters(data)
+            recyclerView.adapter = adapter
+
         } catch (e: Exception) {
             e.printStackTrace()
         }
