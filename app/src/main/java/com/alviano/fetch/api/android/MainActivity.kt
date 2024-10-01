@@ -61,7 +61,7 @@ class MainActivity : AppCompatActivity() {
                 parseJson(response)
             },
             { error ->
-                resultView.setText("That didn't work")
+                resultView.text = "That didn't work"
             })
         queue.add(stringRequest)
     }
@@ -69,14 +69,14 @@ class MainActivity : AppCompatActivity() {
     private fun parseJson(response: String) {
         try {
             val jsonObject: JSONObject = JSONObject(response)
-            val jsonArray: JSONArray = jsonObject.getJSONArray("users")
+            val jsonArray: JSONArray = jsonObject.getJSONArray("data")
             for (i in 0 until jsonArray.length()){
                 val jsonObject2: JSONObject = jsonArray.getJSONObject(i)
-                val nameVar = jsonObject2.getString("name")
-                val jobVar = jsonObject2.getString("job")
                 val idVar = jsonObject2.getString("id")
-                val createdAtVar = jsonObject.getString("createdAt")
-                resultView.append("Name: " + nameVar + "Job: " + jobVar + "Id: " + idVar + "Created at: " + createdAtVar + "\n")
+                val emailVar = jsonObject2.getString("email")
+                val firstNameVar = jsonObject2.getString("first_name")
+                val lastNameVar = jsonObject.getString("last_name")
+                resultView.append("Id: $idVar\nEmail: $emailVar\nFirstName: $firstNameVar\nLastName: $lastNameVar\n\n")
             }
         } catch (e: Exception) {
             e.printStackTrace()
