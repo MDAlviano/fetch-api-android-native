@@ -1,5 +1,6 @@
 package com.alviano.fetch.api.android
 
+import android.content.Intent
 import android.net.ConnectivityManager
 import android.os.Bundle
 import android.widget.Button
@@ -29,6 +30,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var resultView: TextView
     private lateinit var buttonFetch: Button
     private lateinit var recyclerView: RecyclerView
+    private lateinit var toLoginBtn: Button
 
     private val networkChecker by lazy {
         NetworkChecker(getSystemService(ConnectivityManager::class.java))
@@ -48,11 +50,16 @@ class MainActivity : AppCompatActivity() {
         resultView = findViewById(R.id.resultsView)
         buttonFetch = findViewById(R.id.buttonFetch)
         recyclerView = findViewById(R.id.recyclerView)
+        toLoginBtn = findViewById(R.id.toLogin)
 
         // parsing data
         buttonFetch.setOnClickListener {
             fetchData()
             Toast.makeText(this, "Clicked", Toast.LENGTH_SHORT).show()
+        }
+
+        toLoginBtn.setOnClickListener {
+            startActivity(Intent(this, SignInActivity::class.java))
         }
 
     }
