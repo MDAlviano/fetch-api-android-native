@@ -20,6 +20,7 @@ class GridAdapter: BaseAdapter() {
         this.context = context
         this.imgProduct = imgProduct
         this.productTitle = productTitle
+        this.inflater = LayoutInflater.from(context) // Inisialisasi inflater
     }
 
     override fun getCount(): Int {
@@ -36,22 +37,19 @@ class GridAdapter: BaseAdapter() {
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
 
-        var view = convertView
+        // Gunakan var view untuk menampung convertView atau inflate jika null
+        val view = convertView ?: inflater.inflate(R.layout.grid_viewholder, parent, false)
 
-        if (inflater == null) {
-            inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        }
-        if (view == null) {
-            view = inflater.inflate(R.layout.grid_viewholder, null)
-        }
+        // Gunakan findViewById secara aman tanpa !! untuk menghindari NullPointerException
+        val imageView: ImageView = view.findViewById(R.id.imageTxt)
+        val textView: TextView = view.findViewById(R.id.titleTxt)
 
-        val imageView: ImageView = convertView?.findViewById(R.id.imageTxt)!!
-        val textView: TextView = convertView.findViewById(R.id.titleTxt)!!
-
+        // Atur data ke imageView dan textView
         imageView.setImageResource(imgProduct[position])
         textView.text = productTitle[position]
 
-        return convertView
+        // Kembalikan view yang tidak null
+        return view
     }
 
 }

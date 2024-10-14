@@ -34,6 +34,11 @@ class GridViewActivity : AppCompatActivity() {
             R.drawable.ic_launcher_foreground,
             R.drawable.ic_launcher_foreground,
             R.drawable.ic_launcher_foreground,
+            R.drawable.ic_launcher_foreground,
+            R.drawable.ic_launcher_foreground,
+            R.drawable.ic_launcher_foreground,
+            R.drawable.ic_launcher_foreground,
+            R.drawable.ic_launcher_foreground,
         )
 
         val titleName: Array<String> = arrayOf(
@@ -49,7 +54,12 @@ class GridViewActivity : AppCompatActivity() {
             "Hai",
             "Hai",
             "Hai",
-            "Hai"
+            "Hai",
+            "Hai",
+            "Hai",
+            "Hai",
+            "Hai",
+            "Hai",
         )
 
         val gridAdapter: GridAdapter = GridAdapter()
