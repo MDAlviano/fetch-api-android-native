@@ -1,4 +1,4 @@
-package com.alviano.fetch.api.android
+package com.alviano.fetch.api.android.activity.main
 
 import android.content.Intent
 import android.net.ConnectivityManager
@@ -6,11 +6,11 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.alviano.fetch.api.android.adapters.MyAdapters
+import com.alviano.fetch.api.android.R
+import com.alviano.fetch.api.android.activity.signin.SignInActivity
 import com.alviano.fetch.api.android.data.Person
 import com.alviano.fetch.api.android.networking.NetworkChecker
 import com.alviano.fetch.api.android.networking.PostApi

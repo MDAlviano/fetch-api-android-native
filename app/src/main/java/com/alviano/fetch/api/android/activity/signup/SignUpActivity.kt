@@ -1,12 +1,10 @@
-package com.alviano.fetch.api.android
+package com.alviano.fetch.api.android.activity.signup
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.alviano.fetch.api.android.databinding.ActivitySignInBinding
+import com.alviano.fetch.api.android.activity.signin.SignInActivity
 import com.alviano.fetch.api.android.databinding.ActivitySignUpBinding
 
 class SignUpActivity : AppCompatActivity() {

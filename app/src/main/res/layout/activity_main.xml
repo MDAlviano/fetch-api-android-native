@@ -8,7 +8,7 @@
     android:layout_gravity="center"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".activity.main.MainActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
@@ -44,6 +44,16 @@
         android:layout_height="wrap_content"
         android:text="Login"
         app:layout_constraintBottom_toTopOf="@+id/buttonFetch"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/toGrid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="GridView"
+        app:layout_constraintBottom_toTopOf="@+id/toLogin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />

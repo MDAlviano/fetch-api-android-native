@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:textAlignment="center"
     android:fitsSystemWindows="true"
-    tools:context=".SignInActivity">
+    tools:context=".activity.signin.SignInActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"

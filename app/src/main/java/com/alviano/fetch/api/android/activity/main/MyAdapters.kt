@@ -1,4 +1,4 @@
-package com.alviano.fetch.api.android.adapters
+package com.alviano.fetch.api.android.activity.main
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
