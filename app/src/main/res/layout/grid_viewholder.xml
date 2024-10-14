@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/grid_viewholder"
+    android:layout_width="175dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    android:background="@color/white"
+    android:elevation="3dp"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingVertical="8dp">
+
+
+    <ImageView
+        android:id="@+id/imageTxt"
+        android:layout_width="102dp"
+        android:layout_height="80dp"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/titleTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="TextView" />
+
+</LinearLayout>
