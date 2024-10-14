@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.alviano.fetch.api.android.R
+import com.alviano.fetch.api.android.activity.gridview.GridViewActivity
 import com.alviano.fetch.api.android.activity.signin.SignInActivity
 import com.alviano.fetch.api.android.data.Person
 import com.alviano.fetch.api.android.networking.NetworkChecker
@@ -31,6 +32,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var buttonFetch: Button
     private lateinit var recyclerView: RecyclerView
     private lateinit var toLoginBtn: Button
+    private lateinit var toGrid: Button
 
     private val networkChecker by lazy {
         NetworkChecker(getSystemService(ConnectivityManager::class.java))
@@ -51,6 +53,7 @@ class MainActivity : AppCompatActivity() {
         buttonFetch = findViewById(R.id.buttonFetch)
         recyclerView = findViewById(R.id.recyclerView)
         toLoginBtn = findViewById(R.id.toLogin)
+        toGrid = findViewById(R.id.toGrid)
 
         // parsing data
         buttonFetch.setOnClickListener {
@@ -60,6 +63,10 @@ class MainActivity : AppCompatActivity() {
 
         toLoginBtn.setOnClickListener {
             startActivity(Intent(this, SignInActivity::class.java))
+        }
+
+        toGrid.setOnClickListener {
+            startActivity(Intent(this, GridViewActivity::class.java))
         }
 
     }

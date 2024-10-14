@@ -54,6 +54,7 @@ class GridViewActivity : AppCompatActivity() {
 
         val gridAdapter: GridAdapter = GridAdapter()
         gridAdapter.girdAdapter(this, imageView, titleName)
+        binding.allItems.adapter = gridAdapter
 
         binding.allItems.setOnItemClickListener { parent, view, position, id ->
             Toast.makeText(this, "You Clicked on ${titleName[position]}", Toast.LENGTH_SHORT).show()
